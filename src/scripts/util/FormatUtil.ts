@@ -1,11 +1,20 @@
-export function decimal(value: number, digits: number = 1) {
+export function decimal(value: number, digits: number = 0) {
     value = value || 0;
     return value.toFixed(digits);
 }
 
-export function currency(value: number, prefix: string = '$', digits: number = 2) {
+export function currency(
+    value: number,
+    language: string = 'english',
+    currency: string = 'USD',
+    digits?: number
+) {
     value = value || 0;
-    return prefix + value.toFixed(digits);
+    return value.toLocaleString(language, {
+        style: 'currency',
+        currency: currency,
+        minimumFractionDigits: digits
+    });
 }
 
 export function date(value: string | Date, locales?: string | string[], options?: Intl.DateTimeFormatOptions) {
