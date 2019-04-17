@@ -5,12 +5,12 @@ export function decimal(value: number, digits: number = 0) {
 
 export function currency(
     value: number,
-    language: string = 'english',
+    locales: string | string[] = 'english',
     currency: string = 'USD',
     digits?: number
 ) {
     value = value || 0;
-    return value.toLocaleString(language, {
+    return value.toLocaleString(locales, {
         style: 'currency',
         currency: currency,
         minimumFractionDigits: digits
